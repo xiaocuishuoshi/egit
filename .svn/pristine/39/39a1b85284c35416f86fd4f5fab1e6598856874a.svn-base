@@ -1,0 +1,22 @@
+<%@ page language="java" import="java.util.*" pageEncoding="gbk"%>  
+<% 
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String ids[]=null;
+if(request.getAttribute("ids")!=null){
+  ids=(String[])request.getAttribute("ids");
+   
+  }
+%>  
+<iframe id="bd" style="width:100%;height:90%" src="<%=path%>/baidu/ydgj.jsp?id=${requestScope.jd.id }&area=${requestScope.area }&datagridId=${param.rel }
+
+_datagrid&time=<%=System.currentTimeMillis()%>"></iframe>
+<form name="form" method="post">
+<%for(int i=0;ids!=null&&i<ids.length;i++){%>
+<input type="hidden" name="ids" value="<%=ids[i]%>">
+
+<%} %>
+开始时间 <input type="text"  name="kssj" >
+结束时间<input  type="text" name="jssj">
+ <input type="button" name="query" value="查询" onClick="form.action='<%=path%>/dwgl/running.do';form.submit();">
+</form>

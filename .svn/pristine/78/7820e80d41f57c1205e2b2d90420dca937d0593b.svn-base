@@ -1,0 +1,44 @@
+
+package com.whfp.oa.manager.jiedu.service;
+
+import com.whfp.oa.commons.base.IBaseService;
+import com.whfp.oa.commons.model.DataGrid;
+import com.whfp.oa.commons.model.PageParam;
+import com.whfp.oa.manager.jiedu.bean.JdManContact;
+import com.whfp.oa.manager.jiedu.bean.JdManFiles;
+import com.whfp.oa.manager.jiedu.bean.JdManRelationShip;
+import com.whfp.oa.manager.jiedu.bean.JdManWork;
+
+/**
+ * 档案
+ * @author wenhu
+ *
+ */
+public interface JdManService extends  IBaseService{
+	
+	//联系人
+	public DataGrid selectJdManContactList(PageParam param,JdManContact m);
+	public boolean saveContact(JdManContact m);
+	public JdManContact findContactById(Long id);
+	public boolean deleteContact(Long[] ids);
+	
+	//附件
+	public DataGrid selectFilesList(PageParam param,JdManFiles m);
+	public boolean saveFile(JdManFiles m);
+	public boolean deleteFile(Long[] ids);
+	
+	//关系人
+	public DataGrid selectRelationshipList(PageParam param,JdManRelationShip m);
+	public boolean saveRelationship(JdManRelationShip m);
+	public JdManRelationShip findRelationshipById(Long id);
+	public boolean deleteRelationship(Long[] ids);
+	
+	//工作经历
+	public DataGrid selectWorkList(PageParam param,JdManWork m);
+	public boolean saveWork(JdManWork m);
+	public JdManWork findWorkById(Long id);
+	public boolean deleteWork(Long[] ids);
+	
+	
+	
+}

@@ -1,0 +1,56 @@
+package com.whfp.oa.manager.jiedu.action;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import com.whfp.oa.commons.base.BaseAction;
+import com.whfp.oa.manager.jd.bean.JdRyb;
+import com.whfp.oa.manager.jiedu.service.JdManService;
+
+@Controller
+@RequestMapping("/jiedu/man")
+public class ManAction extends BaseAction{
+	
+	@Autowired
+	private JdManService jdManService;
+	
+	@RequestMapping("list")
+	public String list(){
+		return "jiedu/man/list";
+	}
+	
+	@RequestMapping("view")
+	public String view(){
+		return "jiedu/man/view-all";
+	}
+	
+	/**
+	 * 戒毒人员的亲属关系（列表、iud）
+	 * @param uid
+	 * @return
+	 */
+	@RequestMapping("relationship")
+	public String relationship(Model model,String uid){
+		
+		JdRyb user = jdManService.get(JdRyb.class,uid);
+		
+		model.addAttribute("man", user);
+		return "jiedu/man/relationship-list";
+	}
+	
+	@RequestMapping("contact")
+	public String contact(String uid){
+		return "jiedu/man/contact-list";
+	}
+	
+	@RequestMapping("work")
+	public String work(String uid){
+		return "jiedu/man/work-list";
+	}
+	
+	@RequestMapping("files")
+	public String files(String uid){
+		return "jiedu/man/files-list";
+	}
+}

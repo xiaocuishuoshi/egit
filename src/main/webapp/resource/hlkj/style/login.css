@@ -1,0 +1,37 @@
+@charset "utf-8";/* CSS Document */
+html{overflow-x:hidden;overflow-y:hidden;}
+body{background:#333;color:#fff;font-family:"微软雅黑";font-size:12px;line-height:24px;margin:0px;overflow-x:hidden;overflow-y:hidden;width:100%;}
+a{color:#555;text-decoration:none;}
+a:hover{color:#f8357f;}
+img{ max-width:100%; height:auto; }
+ul,li{list-style-type:none;padding:0;margin:0;}
+dl,dt,dd,h1,h2,h3,h4,p{padding:0;margin:0;}
+.screen{margin:0px;width:100%;float:left;}
+
+img{border:0;}
+
+/*menu*/
+
+.bgpic {
+    height: 100%;width: 100%;z-index: -99999;
+}
+#loading {
+    width: 100%;height: 100%;position: fixed; z-index: 999; background:url(resource/hlkjimages/loading.gif) no-repeat center #252525;
+}
+
+.header { float:left; width:100%; height:96px;  background:rgba(55,56,59,.7); background:url(resource/hlkjimages/login_he.png) repeat 0 0\9; position:fixed; top:0; left:0; z-index:800;}
+.logo { float:left; width:283px; height:70px; margin-left:30px; display:inline; margin-top:14px;}
+.text { float:left; width:170px; height:50px; padding:6px 15px; border-left:2px solid #fff; margin:18px 0 0 15px; line-height:25px; font-size:20px; font-family:"微软雅黑"; font-weight:normal;}
+
+.footer { float:left; width:100%; height:144px;  background:rgba(0,0,0,.7); background:url(resource/hlkjimages/login_fo.png) repeat 0 0\9;position:fixed; bottom:0;z-index:800;}
+.left_time { float:left; width:500px; margin-top:25px; opacity:.7;margin-left:30px;}
+#sj_time { float:left; width:240px; height:100px; line-height:100px; font-size:90px; color:#fff; font-family:Arial; font-weight:normal;}
+#sj_xq { float:left; font-size:22px; line-height:28px; color:#fff; font-family:Arial; margin-top:30px;}
+#sj_rq { font-size:22px;}
+
+.loginbox { float:right; width:370px; margin-top:16px;z-index:1}
+.srkbox { float:left; width:250px; height:31px; margin-top:10px; border:2px solid #4a4a4a; background:#191a1f; position:relative; margin-bottom:3px;}
+.login-ico { float:left; width:26px; height:26px; font-size:26px; color:#fff; position:absolute; left:0; background:rgba(255,255,255,.5); margin-top:2px; margin-left:2px;}
+.srkbox  input { float:left; width:205px; height:28px; padding-left:40px; line-height:28px;  color:#fff; font-family: Arial; font-size:18px; background:none; border:none; color:#fff; }
+.logbut { float:right; width:111px; height:111px;}
+.logbut input { width:111px; height:85px; margin-top:10px; background:#60c8bc; border:none; color:#fff; color:rgba(255,255,255,.95); cursor:pointer; font-size:24px;}

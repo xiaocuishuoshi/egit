@@ -1,0 +1,6 @@
+jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc\:mysql\://127.0.0.1\:3306/wxjd?useUnicode\=true&characterEncoding\=UTF-8&zeroDateTimeBehavior\=convertToNull
+jdbc.username=root
+jdbc.password=123456
+dbcp.maxActive=50
+dbcp.maxIdle=200

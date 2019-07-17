@@ -1,0 +1,14 @@
+#Easemob rest api server domain
+API_SERVER_HOST = a1.easemob.com
+
+#Appkey, just for test
+#APPKEY = easemob-playground#test1
+APPKEY=zhang3776813#jwt
+#App client id of the app above
+#APP_CLIENT_ID = YXA6wDs-MARqEeSO0VcBzaqg5A
+APP_CLIENT_ID=YXA6NAdKUKPWEeWlQ3NGcY2b3Q
+#App client secret of the app above
+#APP_CLIENT_SECRET = YXA6JOMWlLap_YbI_ucz77j-4-mI0JA
+APP_CLIENT_SECRET=YXA6zi9IoiuI7LLC4Vap6ecCJybF7p4
+
+

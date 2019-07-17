@@ -1,0 +1,5 @@
+package com.whfp.oa.manager.app.action.model;
+
+public class ManLogOutputModel {
+
+}

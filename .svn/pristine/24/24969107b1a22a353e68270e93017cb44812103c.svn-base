@@ -1,0 +1,208 @@
+package com.whfp.oa.manager.jiedu.service.impl;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Service;
+
+
+import com.whfp.oa.commons.base.BaseServiceImpl;
+import com.whfp.oa.commons.model.DataGrid;
+import com.whfp.oa.commons.model.PageParam;
+import com.whfp.oa.commons.util.SearchFilterUtil;
+import com.whfp.oa.manager.jiedu.bean.JdManContact;
+import com.whfp.oa.manager.jiedu.bean.JdManFiles;
+import com.whfp.oa.manager.jiedu.bean.JdManRelationShip;
+import com.whfp.oa.manager.jiedu.bean.JdManWork;
+import com.whfp.oa.manager.jiedu.service.JdManService;
+
+@Service
+public class JdManServiceImpl extends BaseServiceImpl implements JdManService {
+	
+	@Override
+	public DataGrid selectJdManContactList(PageParam param, JdManContact m) {
+		DataGrid data = new DataGrid();
+		StringBuffer sb = new StringBuffer(" from JdManContact s  where 1=1");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		if (m.getUserId() != null && !"".equals(m.getUserId())) {
+			sb.append(" and s.userId = '" + m.getUserId() + "'");
+		}
+		
+		SearchFilterUtil.appendRules(sb, map, param, null);
+		
+		data.setTotal((Long) dao.findUniqueOne(
+				"select count(*)" + sb.toString(), map));
+		
+		List<Map<String, Object>> rows = dao.findPage(sb.toString(),
+				param.getPage(), param.getRows(), map);
+		data.setRows(rows);
+		return data;
+	}
+
+	@Override
+	public JdManContact findContactById(Long id) {
+	
+		return dao.get(JdManContact.class, id);
+	}
+	
+	@Override
+	public boolean saveContact(JdManContact m) {
+		
+		return dao.saveOrUpdate(m);
+	}
+
+	@Override
+	public boolean deleteContact(Long[] ids) {
+		List<Object> c=new ArrayList<Object>();
+
+		for (Long id : ids) { 
+			JdManRelationShip one = dao.get(JdManRelationShip.class, id); 
+	
+			c.add(one);
+		}
+		 dao.deleteAll(c);
+		return true;
+	}
+
+	@Override
+	public DataGrid selectFilesList(PageParam param, JdManFiles m) {
+		DataGrid data = new DataGrid();
+		StringBuffer sb = new StringBuffer(" from JdManFiles s  where 1=1");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		if (m.getUserId() != null && !"".equals(m.getUserId())) {
+			sb.append(" and s.userId = '" + m.getUserId() + "'");
+		}
+		
+		SearchFilterUtil.appendRules(sb, map, param, null);
+		
+		data.setTotal((Long) dao.findUniqueOne(
+				"select count(*)" + sb.toString(), map));
+		
+		List<Map<String, Object>> rows = dao.findPage(sb.toString(),
+				param.getPage(), param.getRows(), map);
+		data.setRows(rows);
+		return data;
+	}
+
+	@Override
+	public boolean saveFile(JdManFiles m) {
+		
+		return dao.saveOrUpdate(m);
+	}
+
+	@Override
+	public boolean deleteFile(Long[] ids) {
+		List<Object> c=new ArrayList<Object>();
+
+		for (Long id : ids) { 
+			JdManRelationShip one = dao.get(JdManRelationShip.class, id); 
+	
+			c.add(one);
+		}
+		 dao.deleteAll(c);
+		return true;
+	}
+
+	@Override
+	public DataGrid selectWorkList(PageParam param, JdManWork m) {
+		
+		DataGrid data = new DataGrid();
+		StringBuffer sb = new StringBuffer(" from JdManWork s  where 1=1");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		if (m.getUserId() != null && !"".equals(m.getUserId())) {
+			sb.append(" and s.userId = '" + m.getUserId() + "'");
+		}
+		
+		SearchFilterUtil.appendRules(sb, map, param, null);
+		
+		data.setTotal((Long) dao.findUniqueOne(
+				"select count(*)" + sb.toString(), map));
+		
+		List<Map<String, Object>> rows = dao.findPage(sb.toString(),
+				param.getPage(), param.getRows(), map);
+		data.setRows(rows);
+		return data;
+	}
+
+	@Override
+	public JdManWork findWorkById(Long id) {
+		
+		return dao.get(JdManWork.class, id);
+	}
+	
+	@Override
+	public boolean saveWork(JdManWork m) {
+	
+		return dao.saveOrUpdate(m);
+	}
+
+	@Override
+	public boolean deleteWork(Long[] ids) {
+		List<Object> c=new ArrayList<Object>();
+
+		for (Long id : ids) { 
+			JdManRelationShip one = dao.get(JdManRelationShip.class, id); 
+	
+			c.add(one);
+		}
+		 dao.deleteAll(c);
+		return true;
+	}
+
+	@Override
+	public DataGrid selectRelationshipList(PageParam param, JdManRelationShip m) {
+		DataGrid data = new DataGrid();
+		StringBuffer sb = new StringBuffer(" from JdManRelationShip s  where 1=1");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		if (m.getUserId() != null && !"".equals(m.getUserId())) {
+			sb.append(" and s.userId = '" + m.getUserId() + "'");
+		}
+		
+		SearchFilterUtil.appendRules(sb, map, param, null);
+		
+		data.setTotal((Long) dao.findUniqueOne(
+				"select count(*)" + sb.toString(), map));
+		
+		List<Map<String, Object>> rows = dao.findPage(sb.toString(),
+				param.getPage(), param.getRows(), map);
+		data.setRows(rows);
+		return data;
+	}
+
+	@Override
+	public boolean saveRelationship(JdManRelationShip m) {
+
+		return dao.saveOrUpdate(m);
+	}
+	
+	@Override
+	public JdManRelationShip findRelationshipById(Long id) {
+		
+		return dao.get(JdManRelationShip.class, id);
+	}
+
+	@Override
+	public boolean deleteRelationship(Long[] ids) {
+		
+		List<Object> c=new ArrayList<Object>();
+
+		for (Long id : ids) { 
+			JdManRelationShip one = dao.get(JdManRelationShip.class, id); 
+	
+			c.add(one);
+		}
+		 dao.deleteAll(c);
+		return true;
+	}
+	
+}

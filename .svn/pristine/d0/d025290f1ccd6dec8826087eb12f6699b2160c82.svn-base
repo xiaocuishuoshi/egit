@@ -1,0 +1,162 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>接口中心</title>
+</head>
+<body>
+
+	<h3>接口中心</h3>
+	<p>接口可以POST或者GET，方便调试，本页面demo调用使用get方式请求！</p>
+	<p>包含中文提交数据，必须使用POST方式，否则会导致乱码。</p>
+
+	<dl class="dl-horizontal">
+		<dt><a href="${basePath }visitor/create.do" target="_blank">走访记录新增</a></dt>
+  		<dd>
+  			<ul>
+  				<li>toUid：戒毒人员uid</li>
+  				<li>toUserName：戒毒人员名字</li>
+  				<li>reasonType：走访原因</li>
+  				<li>toVisitor：走访对象姓名</li>
+  				<li>toVisitorRelationship：走访对象于戒毒人员关系</li>
+  				<li>toVisitorPhone：走访对象联系方式</li>
+  				<li>key1：问题一答案</li>
+  				<li>key2：问题二答案</li>
+  				<li>key3：问题三答案</li>
+  				<li>key4：问题四答案</li>
+  				<li>key5：问题五答案</li>
+  				<li>remarks：备注说明</li>
+  			</ul>
+  		</dd>
+  		
+  		<dt><a href="${basePath }visitor/my.do" target="_blank">我的走访记录</a></dt>
+  		<dd>
+  			<ul>
+  				<li>实通社工只显示自己提交的走访记录，如果是上级，可查看所有下级的数据提交</li>
+  				<li>pageIndex:分页，从0开始</li>
+  				<li>pageSize:分页条数，默认20，可为空</li>
+  			</ul>
+  		</dd>
+  		
+  		<dt><a href="${basePath }talk/create.do" target="_blank">谈话记录新增</a></dt>
+  		<dd>
+  			<ul>
+  				<li>toUid：戒毒人员uid</li>
+  				<li>toUserName：戒毒人员名字</li>
+  				<li>address：谈话地点</li>
+  				<li>content：谈话内容</li>
+  				<li>talkUid：谈话者uid</li>
+  				<li>talkUser：谈话者姓名</li>
+
+  			</ul>
+  		</dd>
+  		
+  		<dt><a href="${basePath }talk/my.do" target="_blank">我的谈话记录</a></dt>
+  		<dd>
+  			<ul>
+
+  				<li>pageIndex:分页，从0开始</li>
+  				<li>pageSize:分页条数，默认20，可为空</li>
+  			</ul>
+  		</dd>
+  		
+  		<dt><a href="${basePath }man/my.do" target="_blank">我的戒毒人员信息（列表）</a></dt>
+  		<dd>
+  			<ul>
+  				<li>pageIndex:分页，从0开始</li>
+  				<li>pageSize:分页条数，默认20，可为空</li>
+  			</ul>
+  		</dd>  	
+  		<dt><a href="${basePath }man/get.do" target="_blank">获取单个戒毒人员信息（全部</a></dt>
+  		<dd>
+  			<ul>
+  				<li>uid:戒毒人员uid，必填</li>
+  			</ul>
+  		</dd>  		
+  		<dt><a href="${basePath }man/getlog.do" target="_blank">获取单个戒毒人员信息（时间轴）</a></dt>
+  		<dd>
+  			<ul>
+  				<li>uid:戒毒人员uid，必填</li>
+  			</ul>
+  		</dd>
+  		
+  		<dt><a href="${basePath }qingjia/create.do" target="_blank">请假提交</a></dt>
+  		<dd>
+  			<ul>
+  				<li>uid:戒毒人员uid，必填</li>
+  			</ul>
+  		</dd>
+  		<dt><a href="${basePath }qingjia/my.do" target="_blank">我的请假列表</a></dt>
+  		<dd>
+  			<ul>
+  				<li>pageIndex:分页，从0开始</li>
+  				<li>pageSize:分页条数，默认20，可为空</li>
+  			</ul>
+  		</dd>
+  		<dt><a href="${basePath }qingjia/cancel.do" target="_blank">请假取消</a></dt>
+  		<dd>
+  			<ul>
+  				<li>id:请假记录id，必填</li>
+  				<li>uid:戒毒人员uid，必填</li>
+  			</ul>
+  		</dd>  	
+  		<dt><a href="${basePath }qingjia/audit.do" target="_blank">请假审批</a></dt>
+  		<dd>
+  			<ul>
+  				<li>id:请假记录id，必填</li>
+  				<li>uid:操作者uid，必填，社区或民警</li>
+  			</ul>
+  		</dd>  		
+  		
+  		<dt><a href="${basePath }qiuzhu/create.do" target="_blank">求助提交</a></dt>
+  		<dd>
+  			<ul>
+
+  			</ul>
+  		</dd>
+  		<dt><a href="${basePath }qiuzhu/my.do" target="_blank">我的求助</a></dt>
+  		<dd>
+  			<ul>
+  				<li>pageIndex:分页，从0开始</li>
+  				<li>pageSize:分页条数，默认20，可为空</li>
+  			</ul>
+  		</dd>  			
+  		<dt><a href="${basePath }qiuzhu/resp.do" target="_blank">求助回复</a></dt>
+  		<dd>
+  			<ul>
+  				<li>content:回复内容</li>
+  			</ul>
+  		</dd>
+  		
+  		<dt><a href="${basePath }niaojian/create.do" target="_blank">尿检数据提交</a></dt>
+  		<dd>
+  			<ul>
+
+  			</ul>
+  		</dd>
+  		<dt><a href="${basePath }niaojian/my.do" target="_blank">我的尿检</a></dt>
+  		<dd>
+  			<ul>
+
+  			</ul>
+  		</dd>
+  		<dt><a href="${basePath }niaojian/check.do" target="_blank">尿检检查</a></dt>
+  		<dd>
+  			<ul>
+
+  			</ul>
+  		</dd>  			  			
+  		
+  		
+  	</dl>
+
+</body>
+</html>

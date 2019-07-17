@@ -1,0 +1,103 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/jsp/commons/include.inc.jsp"%>
+
+<form method="post" action="jiedu/act/visit/submit.do" 
+	onsubmit="return validateSubmitForm(this)">
+	<input type="hidden" name="id" value="${one.id }"/>
+	<input type="hidden" name="toUid" />
+	<div style="width: 100%; margin: 0 auto;">
+	
+		<table class="table table-bordered ">
+		
+			<tr>	
+				<th style="width:70px">戒毒人员：</th>
+				<td colSpan="3">
+					<input type="text" name="toUser"  required="true" value="${one.toUser }"  style="width:150px" />
+				</td>
+			</tr>
+			<tr>	
+				<th style="width:70px">被访人：</th>
+				<td>
+					<input type="text" name="toVisitor"  value="${one.toVisitor }"   required="true"  style="width:150px" />
+				</td>
+				<th style="width:70px">和戒毒人员关系：</th>
+				<td>
+					<input type="text" name="toVisitorRelationship"  required="true" style="width:150px" />
+				</td>
+			</tr>
+			<tr>	
+				<th style="width:70px">联系方式：</th>
+				<td>
+					<input type="text" name="toVisitorPhone"  required="true"   style="width:150px" />
+				</td>
+				<th style="width:70px">访问时间：</th>
+				<td >
+					<input type="text" name="phone"   required="true" style="width:150px" />
+				</td>
+			</tr>
+			<tr>	
+				<th style="width:70px">访问地点：</th>
+				<td colSpan="3">
+					<input type="text" name="address"   required="true" style="width:90%" />
+				</td>
+			</tr>
+			<tr>	
+				<th style="width:70px">1：社区戒毒人员及家庭状况：</th>
+				<td colSpan="3">
+					<textarea rows="3" cols="3" name="key1" style="width:90%;"  required="true" ></textarea>
+				</td>
+			</tr>
+			<tr>	
+				<th style="width:70px">2:社区戒毒人员工作（生产）状况：</th>
+				<td colSpan="3">
+					<textarea rows="3" cols="3" name="key2"  style="width:90%;"  required="true" ></textarea>
+				</td>
+			</tr>
+			<tr>	
+				<th style="width:70px">3:对社区戒毒康复工作办公室的意见和建议：</th>
+				<td colSpan="3">
+					<textarea rows="3" cols="3" name="key3" style="width:90%;"   required="true" ></textarea>
+				</td>
+			</tr>
+			<tr>	
+				<th style="width:70px">4:目前您最突出的困难是什么：</th>
+				<td colSpan="3">
+					<textarea rows="3" cols="3" name="key4" style="width:90%;"   required="true" ></textarea>
+				</td>
+			</tr>
+			<tr>	
+				<th style="width:70px">5:基它问题：</th>
+				<td colSpan="3">
+					<textarea rows="3" cols="3" name="key5"  style="width:90%;"  required="true" ></textarea>
+				</td>
+			</tr>
+			<tr>
+				<th></th>
+				<td colspan="3">
+					<div style="margin-top: 10px;margin-bottom: 10px;">
+						<button type="submit" class="btn btn-primary">保存</button>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+		<input type="hidden" name="datagridId" value="${param.rel}_datagrid" />
+		<input type="hidden" name="currentCallback" value="close" />
+	</div>
+</form>
+
+<script type="text/javascript">
+var relationship='';
+var sex='';
+$(function(){
+
+	if(relationship!=''){
+		$("select[name='relationship']").val(relationship);
+	}
+
+	if(sex!=''){
+     	 $("input[name='sex'][value="+sex+"]").attr("checked","checked");
+    }   
+})
+
+</script>

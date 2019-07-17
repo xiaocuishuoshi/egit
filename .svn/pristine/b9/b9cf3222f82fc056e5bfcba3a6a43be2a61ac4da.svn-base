@@ -1,0 +1,18 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# 移动短信接口mas配置信息
+# 客户名称
+clientname = hcdx
+#客户代码
+clientcode = hcdx20180520
+#有效期起
+validstart =2018-05-20
+#有效期止
+validend =2018-07-12
+#有效时间
+validday=51
+#以使用时间
+usetime =2
+#注册码
+key=4G95101D4G3BHA1CGBGD4AHG7G7G5FE0-A4977FEEGBC4H35FE270E2CE7071D5DD-17H2CBF5E4054AF72CF97H1A900E2BG9AFDHHB1B44A921FHC1DEDBF9H1GH1E47-BE3EAB3F77E24FHG2GB1B7AE47B107EE
+
+

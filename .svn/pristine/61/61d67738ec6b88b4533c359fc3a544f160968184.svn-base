@@ -1,0 +1,80 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
+<div style="width: 100%; margin: 0 auto;">
+	
+		<table class="table table-bordered ">
+			<tr>
+				<td style="width:100px;">职务</td>
+				<td>姓名</td>
+				<td>单位</td>
+				<td>联系方式</td>
+				<td>职责</td>
+			</tr>
+			<tr>
+				<td style="width:100px;">主任<input type="hidden" name="postion" value="主任"/> </td>
+				<td><input type="text" name="name" /></td>
+				<td><input type="text" name="company" /></td>
+				<td><input type="text" name="phone" /></td>
+				<td><input type="text" name="duty" /></td>
+			</tr>
+			<tr>
+				<td style="width:100px;">(村/社区)责任人<input type="hidden" name="postion" value="(村/社区)责任人"/> </td>
+				<td><input type="text" name="name" /></td>
+				<td><input type="text" name="company" /></td>
+				<td><input type="text" name="phone" /></td>
+				<td><input type="text" name="duty" /></td>
+			</tr>
+			<tr>
+				<td style="width:100px;">家庭成员及其监护人（担保人）<input type="hidden" name="postion" value="家庭成员及其监护人（担保人）"/> </td>
+				<td><input type="text" name="name" /></td>
+				<td><input type="text" name="company" /></td>
+				<td><input type="text" name="phone" /></td>
+				<td><input type="text" name="duty" /></td>
+			</tr>
+			<tr>
+				<td style="width:100px;">专（兼）职社工<input type="hidden" name="postion" value="专（兼）职社工"/> </td>
+				<td><input type="text" name="name" /></td>
+				<td><input type="text" name="company" /></td>
+				<td><input type="text" name="phone" /></td>
+				<td><input type="text" name="duty" /></td>
+			</tr>
+			<tr>
+				<td style="width:100px;">社区网格员<input type="hidden" name="postion" value="社区网格员"/> </td>
+				<td><input type="text" name="name" /></td>
+				<td><input type="text" name="company" /></td>
+				<td><input type="text" name="phone" /></td>
+				<td><input type="text" name="duty" /></td>
+			</tr>
+			<tr>
+				<td style="width:100px;">社区民警<input type="hidden" name="postion" value="社区民警"/> </td>
+				<td><input type="text" name="name" /></td>
+				<td><input type="text" name="company" /></td>
+				<td><input type="text" name="phone" /></td>
+				<td><input type="text" name="duty" /></td>
+			</tr>
+			<tr>
+				<td style="width:100px;">社区医护人员<input type="hidden" name="postion" value="社区医护人员"/> </td>
+				<td><input type="text" name="name" /></td>
+				<td><input type="text" name="company" /></td>
+				<td><input type="text" name="phone" /></td>
+				<td><input type="text" name="duty" /></td>
+			</tr>
+			<tr>
+				<td style="width:100px;">禁毒志愿者<input type="hidden" name="postion" value="禁毒志愿者"/> </td>
+				<td><input type="text" name="name" /></td>
+				<td><input type="text" name="company" /></td>
+				<td><input type="text" name="phone" /></td>
+				<td><input type="text" name="duty" /></td>
+			</tr>
+			
+			<tr>
+				<td colSpan="5" style="text-align:center">
+					<button class="btn btn-primary">保存</button>
+				</td>
+			</tr>
+
+		</table>
+		
+		<input type="hidden" name="datagridId" value="${param.rel }_datagrid" />
+		<input type="hidden" name="currentCallback" value="close" />
+</div>

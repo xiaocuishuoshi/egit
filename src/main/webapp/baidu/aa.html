@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+		body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+		#allmap {height:100%; width: 100%;}
+		#control{width:100%;} 
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Y9Yo0UsPgY38Ncy26Qmbz1B7"></script>
+	<title>设置线、面可编辑</title>
+</head>
+<body>
+	<div id="allmap"></div><!--
+	<div id="control">
+		<button onclick = "polyline.enableEditing();polygon.enableEditing();">开启线、面编辑功能</button>
+		<button onclick = "polyline.disableEditing();polygon.disableEditing();">关闭线、面编辑功能</button>
+	</div>  -->
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	
+	var map = new BMap.Map("allmap");
+	
+	map.centerAndZoom(new BMap.Point(114.954596, 31.176141), 5); 
+	map.addControl(new BMap.NavigationControl({type: BMAP_NAVIGATION_CONTROL_SMALL})); 
+	map.enableScrollWheelZoom();
+	
+	
+	function getBoundary(){
+	
+	
+	       
+	    var bdary0 = new BMap.Boundary(); 
+	    bdary0.get('黄州区', function(rs){       //获取行政区域
+	      //  map.clearOverlays();        //清除地图覆盖物
+	        var count = rs.boundaries.length; //行政区域的点有多少个 
+	        for(var i = 0; i < count; i++){   
+	            var ply = new BMap.Polygon(rs.boundaries[i], {strokeWeight: 2, strokeColor: "red"}); //建立多边形覆盖物
+	            map.addOverlay(ply);  //添加覆盖物
+	            map.setViewport(ply.getPath());    //调整视野         
+	        }                
+	    });   
+     
+}
+
+getBoundary();
+	
+		var point0=new BMap.Point(114.954596, 31.176141); 
+		var marker0 = new BMap.Marker(point0);  // 创建标注
+		map.addOverlay(marker0);              // 将标注添加到地图中
+		var label0 = new BMap.Label("2016-06-01 07:19:21G45(大广高速公路)",{offset:new BMap.Size(20,-10)});
+		marker0.setLabel(label0);
+		 
+		var point1=new BMap.Point(114.954596, 31.176141); 
+		var marker1 = new BMap.Marker(point1);  // 创建标注
+		map.addOverlay(marker1);              // 将标注添加到地图中
+		var label1 = new BMap.Label("2016-06-01 07:16:21G45(大广高速公路)",{offset:new BMap.Size(20,-10)});
+		marker1.setLabel(label1);
+		 
+		var point2=new BMap.Point(114.954596, 31.176141); 
+		var marker2 = new BMap.Marker(point2);  // 创建标注
+		map.addOverlay(marker2);              // 将标注添加到地图中
+		var label2 = new BMap.Label("2016-06-01 07:13:21G45(大广高速公路)",{offset:new BMap.Size(20,-10)});
+		marker2.setLabel(label2);
+		 
+		var point3=new BMap.Point(114.954596, 31.176141); 
+		var marker3 = new BMap.Marker(point3);  // 创建标注
+		map.addOverlay(marker3);              // 将标注添加到地图中
+		var label3 = new BMap.Label("2016-06-01 07:07:21G45(大广高速公路)",{offset:new BMap.Size(20,-10)});
+		marker3.setLabel(label3);
+		 
+		var point4=new BMap.Point(114.954596, 31.176141); 
+		var marker4 = new BMap.Marker(point4);  // 创建标注
+		map.addOverlay(marker4);              // 将标注添加到地图中
+		var label4 = new BMap.Label("2016-06-01 06:58:21G45(大广高速公路)",{offset:new BMap.Size(20,-10)});
+		marker4.setLabel(label4);
+		 
+		 
+		 var point5=new BMap.Point(114.954596, 31.176141); 
+		//设置marker图标为水滴
+		var marker5 = new BMap.Marker(point5, {
+		  // 指定Marker的icon属性为Symbol
+		  icon: new BMap.Symbol(BMap_Symbol_SHAPE_POINT, {
+		    scale: 2,//图标缩放大小
+		    fillColor: "red",//填充颜色
+		    fillOpacity: 0.8//填充透明度
+		  })
+		}); 
+		map.addOverlay(marker5);   
+		var label5 = new BMap.Label("2016-06-01 06:55:21G45(大广高速公路)",{offset:new BMap.Size(20,-10)}); 
+		marker5.setLabel(label5);
+		marker5.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画 
+		
+		 
+		var polyline = new BMap.Polyline([
+		    point0,point1,point2,point3,point4,point5,
+		], {strokeColor:"red", strokeWeight:3, strokeOpacity:0.8});   //创建折线
+		map.addOverlay(polyline);   //增加折线1
+		
+	
+    
+</script>
+
+ 

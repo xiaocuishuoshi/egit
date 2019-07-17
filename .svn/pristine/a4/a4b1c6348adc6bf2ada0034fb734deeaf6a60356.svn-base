@@ -1,0 +1,64 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/jsp/commons/include.inc.jsp" %>
+<style>
+<!--   
+.qq-upload-button{
+	height:95px!important ;
+}
+
+-->
+</style>
+<div style="width: 100%; margin: 0 auto;">
+	
+		<table class="table table-bordered ">
+			<tr>
+				<td style="width:50px;">类型</td>
+				<td>附件</td>
+			</tr>
+			
+			<tr>
+				<td>社区戒毒协议书</td>
+				<td>
+
+				 <div  id="attachments_holder">
+    				<div class="qq-upload-button" style="float:left;margin-top:8px;margin-left:10px;">	
+    					<img alt="" src="http://119.36.80.134:8041/xycg-sup/upload/2019-05-10/da0caf12-92a0-46eb-abe5-b53b5f5b246e.png" style="width:77px;height:77px;">		
+    					<a href="javascript:rmFile('85bf17e73bfb4131b0d9630808c14599')">删除</a>	
+    				</div>
+    				<div class="qq-upload-button" style="float:left;margin-top:8px;margin-left:10px;">	
+    					<img alt="" src="http://119.36.80.134:8041/xycg-sup/upload/2019-05-10/da0caf12-92a0-46eb-abe5-b53b5f5b246e.png" style="width:77px;height:77px;">		
+    					<a href="javascript:rmFile('85bf17e73bfb4131b0d9630808c14599')">删除</a>	
+    				</div>
+    				<div class="qq-upload-button" style="float:left;margin-top:8px;margin-left:10px;">	
+    					<img alt="" src="http://119.36.80.134:8041/xycg-sup/upload/2019-05-10/da0caf12-92a0-46eb-abe5-b53b5f5b246e.png" style="width:77px;height:77px;">		
+    					<a href="javascript:rmFile('85bf17e73bfb4131b0d9630808c14599')">删除</a>	
+    				</div>
+    				<div class="qq-upload-button" style="float:left;margin-top:8px;margin-left:10px;">	
+    					<img alt="" src="http://119.36.80.134:8041/xycg-sup/upload/2019-05-10/da0caf12-92a0-46eb-abe5-b53b5f5b246e.png" style="width:77px;height:77px;">		
+    					<a href="javascript:rmFile('85bf17e73bfb4131b0d9630808c14599')">删除</a>	
+    				</div>		   
+	    		 </div>
+    			 <div class="qq-upload-button-selector qq-upload-button"  style="float:left;margin-top:8px;margin-left:10px;">
+	      				<input type="file" id="upload_file" name="upload_file" class="file-no-visual" style="width:77px;height:77px;"/>
+	    		 </div>
+	    		 				
+				</td>
+			</tr>
+			<tr>
+				<td>担保书</td>
+				<td>
+				 <div  id="attachments_holder">
+    				<div class="qq-upload-button" style="float:left;margin-top:8px;margin-left:10px;">	<img alt="" src="http://119.36.80.134:8041/xycg-sup/upload/2019-05-10/da0caf12-92a0-46eb-abe5-b53b5f5b246e.png" style="width:77px;height:77px;">			<a href="javascript:rmFile('85bf17e73bfb4131b0d9630808c14599')">删除</a>	</div>		   
+	    		 </div>
+    			 <div class="qq-upload-button-selector qq-upload-button"  style="float:left;margin-top:8px;margin-left:10px;">
+	      				<input type="file" id="upload_file" name="upload_file" class="file-no-visual" style="width:77px;height:77px;"/>
+	    		 </div>
+	    						
+				</td>
+			</tr>
+
+		</table>
+		
+		<input type="hidden" name="datagridId" value="${param.rel }_datagrid" />
+		<input type="hidden" name="currentCallback" value="close" />
+</div>

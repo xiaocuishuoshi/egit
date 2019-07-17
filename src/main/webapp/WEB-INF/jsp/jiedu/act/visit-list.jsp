@@ -1,0 +1,117 @@
+﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/jsp/commons/include.inc.jsp"%>
+<div class="easyui-layout" fit="true" >
+	<div  region="center" border="false">
+	<div id="${param.rel}_toolbar" class="search-div">
+	<form  onsubmit="return datagridSearch(this,'${param.rel }_datagrid');"  >
+		<input id="${param.rel}_id" name="id" type="hidden" value="0"/>
+		<div  class="search-content " >
+			<span>
+				<label>戒毒人员：</label>
+				<input	type="text" name="to_uid" class="span2"  />
+				<i class="boot_icon-question-sign" selectLike="tooltip"></i>
+			</span>
+			<span>
+				<label>访问人：</label>
+				<input	type="text" name="to_user" class="span2"  />
+				<i class="boot_icon-question-sign" selectLike="tooltip"></i>
+			</span>
+		
+		</div>
+		<div class="search-toolbar" >
+			<span style="float:left;">
+				<a class="easyui-linkbutton clearDgChecked"  icon="icon-redo"	plain="true"  title="清空所有勾选项" >清空勾选</a>
+				
+				<shiro:hasPermission name="jbxx:add">  
+					<a class="easyui-linkbutton"  icon="icon-add"	plain="true"
+					  title="添加"   href="jiedu/act/visit/edit.do?id=0&rel=${param.rel}"  target="dialog" width="800" height="600" rel="${param.rel}_add" >添加</a>
+					
+				</shiro:hasPermission>
+				<shiro:hasPermission name="jbxx:update">  
+					<a class="easyui-linkbutton"  icon="icon-edit"	plain="true"
+					  title="修改"	href="jiedu/act/visit/edit.do?id={id}&rel=${param.rel}" target="dialog" width="800" height="600" rel="${param.rel}_update" warn="请先选择一条记录" >修改</a>
+					
+				</shiro:hasPermission>
+				<shiro:hasPermission name="jbxx:delete">  
+					<a class="easyui-linkbutton"  icon="icon-remove"	plain="true"
+					   	 href="jiedu/act/visit/delete.do" target="selectedTodo"  title="确定要删除吗?" warn="至少选择一个用户">删除</a>
+				</shiro:hasPermission>	
+				
+			</span>
+			
+			<span style="float:right;">
+				<button class="btn btn-primary btn-small" type="submit">查询</button>&nbsp;
+				<button class="btn btn-small clear" type="button" >清空</button>&nbsp;	
+			</span>
+			
+		</div>
+	</form>
+</div>
+
+<table id="${param.rel }_datagrid" toolbar="#${param.rel}_toolbar" title="走访记录--查询信息"></table>
+
+<script type="text/javascript">
+		
+	$(function() {
+		$('#<%=request.getParameter("rel")%>_datagrid').datagrid({
+			
+			border:true,
+			nowrap : false,
+			url : "jiedu/act/visit/query.do",  
+			columns : [ [ 
+				{
+					field:"ck",
+					title : "勾选",
+					checkbox:true
+				},
+				{
+					field : "jdRyxm",
+					title : "戒毒人员",
+					align:"center",
+					width : 50,
+					formatter: function(value,row,index){
+
+						return '<a href="jbxx/show.do?id='+row.manId+'" target="dialog" width="1000" height="500" rel="<%=request.getParameter("rel")%>_show" title="查看用户详情">'+value+'</a>';
+						
+					}
+				},
+				{
+					field : "toUser",
+					title : "走访对象",
+					align:"center",
+					width : 50
+				},{
+					field : "toVisitorRelationship",
+					title : "与戒毒人关系",
+					align:"center",
+					width : 50
+				},{
+					field : "toVisitorPhone",
+					title : "联系方式",
+					align:"center",
+					width : 50
+				},{
+					field : "address",
+					title : "谈话地点",
+					align:"center",
+					width : 50
+				},{
+					field : "visitorDate",
+					title : "走访时间",
+					align:"center",
+					width : 50
+				},{
+					field : "visitorName",
+					title : "走访人",
+					align:"center",
+					width : 50
+				}
+				 
+			]] 
+		});
+		
+	});
+</script>
+	</div>
+</div>
+

@@ -1,0 +1,224 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/jsp/commons/include.inc.jsp"%>    
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>接口中心</title>
+<link href="/jiedu/resource/js/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+<script type="text/javascript" src="/jiedu/resource/js/jquery/jquery-1.10.2.js"></script>
+<style type="text/css">
+
+.red{
+color:red;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="row">
+
+
+	<h3>接口中心</h3>
+	<p>接口可以POST或者GET，方便调试，本页面demo调用使用get方式请求！</p>
+	<p>包含中文提交数据，必须使用POST方式，否则会导致乱码。</p>
+
+	<dl class="dl-horizontal">
+		<dt><a href="${basePath }account/login.do" target="_blank">系统登录</a></dt>
+  		<dd>
+  			<ul>
+  				<li>post 请求，用户登录获得uid<span class="red">可用</span> </li>
+  				<li>mobile：用户手机号,字符串，不可为空</li>
+  				<li>passwd：密码, 字符串，不可为空</li>
+  			</ul>
+  		</dd>
+  		<dt><a href="${basePath }file/upload.do" target="_blank">附件上传</a></dt>
+  		<dd>
+  			<ul>
+  				<li>post 请求，上传附件返回附件在库的信息<span class="red">可用</span> </li>
+  				<li>file：文件，不可为空</li>
+  			</ul>
+  		</dd>
+  		
+		<dt><a href="${basePath }visitor/create.do" target="_blank">走访记录新增</a></dt>
+  		<dd>
+  			<ul>
+  				<li>toUid：戒毒人员uid</li>
+  				<li>toUserName：戒毒人员名字</li>
+  				<li>reasonType：走访原因</li>
+  				<li>toVisitor：走访对象姓名</li>
+  				<li>toVisitorRelationship：走访对象于戒毒人员关系</li>
+  				<li>toVisitorPhone：走访对象联系方式</li>
+  				<li>key1：问题一答案</li>
+  				<li>key2：问题二答案</li>
+  				<li>key3：问题三答案</li>
+  				<li>key4：问题四答案</li>
+  				<li>key5：问题五答案</li>
+  				<li>remarks：备注说明</li>
+  			</ul>
+  			<li>createUid：当前登陆人id,必填</li>
+  		</dd>
+  		
+  		<dt><a href="${basePath }visitor/my.do" target="_blank">我的走访记录</a></dt>
+  		<dd>
+  			<ul>
+  				<li>实通社工只显示自己提交的走访记录，如果是上级，可查看所有下级的数据提交</li>
+  				<li>pageIndex:分页，从0开始</li>
+  				<li>pageSize:分页条数，默认20，可为空</li>
+  				<li>visitorUid:访问人id,必填</li>
+  			</ul>
+  		</dd>
+  		
+  		<dt><a href="${basePath }talk/create.do" target="_blank">谈话记录新增</a></dt>
+  		<dd>
+  			<ul>
+  				<li>toUid：戒毒人员uid</li>
+  				<li>toUserName：戒毒人员名字</li>
+  				<li>address：谈话地点</li>
+  				<li>content：谈话内容</li>
+  				<li>talkUid：谈话者uid</li>
+  				<li>talkUser：谈话者姓名</li>
+  			</ul>
+  			<li>createUid：当前登陆人id,必填</li>
+  		</dd>
+  		
+  		<dt><a href="${basePath }talk/my.do" target="_blank">我的谈话记录</a></dt>
+  		<dd>
+  			<ul>
+
+  				<li>pageIndex:分页，从0开始</li>
+  				<li>pageSize:分页条数，默认20，可为空</li>
+  			</ul>
+  			<li>talkUid:谈话人id，必填</li>
+  			
+  		</dd>
+  		
+  		<dt><a href="${basePath }man/my.do" target="_blank">我的戒毒人员信息（列表）</a></dt>
+  		<dd>
+  			<ul>
+  				<li>返回和自己关联的戒毒人员 <span class="red">可用,返回假数据</span></li>
+  				<li>pageIndex:分页，从0开始</li>
+  				<li>pageSize:分页条数，默认20，可为空</li>
+  			</ul>
+  		</dd>  	
+  		<dt><a href="${basePath }man/get.do" target="_blank">获取戒毒人员信息（全部</a></dt>
+  		<dd>
+  			<ul>
+  				<li>uid:戒毒人员uid，必填</li>
+  			</ul>
+  		</dd>  		
+  		<dt><a href="${basePath }man/getlog.do" target="_blank">获取戒毒人员信息（时间轴）</a></dt>
+  		<dd>
+  			<ul>
+  				<li> <del>以时间（天）为组，</del> 返回戒毒人员操作日志，<span class="red">可用,返回假数据</span></li>
+  				<li>uid:戒毒人员uid，必填</li>
+  				<li>pageIndex:分页，从0开始</li>
+  				<li>pageSize:分页条数，默认20，可为空</li>
+  			</ul>
+  		</dd>
+  		
+  		<dt><a href="${basePath }qingjia/create.do" target="_blank">请假提交</a></dt>
+  		<dd>
+  			<ul>
+  				<li>戒毒人员操作<span class="red">可用</span></li>
+  				<li>uid:戒毒人员uid，必填</li>
+  				<li>beginDate:请假开始时间，格式：yyyy-mm-dd HH:mm，字符串，必填</li>
+  				<li>endDate:请假结束时间，格式：yyyy-mm-dd HH:mm，字符串，必填</li>
+  				<li>content:请假内容，必填</li>
+  				<li>mType:请假类别（事假，病假，外出，其它），必填</li>
+  			</ul>
+  		</dd>
+  		<dt><a href="${basePath }qingjia/my.do" target="_blank">我的请假列表</a></dt>
+  		<dd>
+  			<ul>
+  				<li>uid:用户uid，必填，<span class="red">可用，数据仅用于显示</span></li>
+  				<li>status:请假状态，0未审批1已审核</li>
+  				<li>pageIndex:分页，从0开始</li>
+  				<li>pageSize:分页条数，默认20，可为空</li>
+  			</ul>
+  		</dd>
+  		<dt><a href="${basePath }qingjia/cancel.do" target="_blank">请假取消</a></dt>
+  		<dd>
+  			<ul>
+  				<li>戒毒人员(本人)操作<span class="red">可用</span></li>
+  				<li>id:请假记录id，必填</li>
+  				<li>uid:戒毒人员uid，必填</li>
+  			</ul>
+  		</dd>  	
+  		<dt><a href="${basePath }qingjia/audit.do" target="_blank">请假审批</a></dt>
+  		<dd>
+  			<ul>
+  				<li>post请求， 社区人员审核戒毒人员请假申请<span class="red">可用</span></li>
+  				<li>id:请假记录id，必填</li>
+  				<li>uid:操作者uid，必填，社区或民警</li>
+  				<li>flag:审批状态：1:通过审批2否决请假</li>
+  				<li>content:审批回复内容，可为空</li>
+  			</ul>
+  		</dd>  		
+  		
+  		<dt><a href="${basePath }qiuzhu/create.do" target="_blank">求助提交</a></dt>
+  		<dd>
+  			<ul>
+				<li>戒毒人员操作，post请求，<span class="red">可用</span></li>
+  				<li>uid:戒毒人员uid，必填</li>
+  				<li>category:类别，如生活、工作、其他等，字符串，非必填</li>
+  				<li>content:求助内容，必填</li>
+  			</ul>
+  		</dd>
+  		<dt><a href="${basePath }qiuzhu/my.do" target="_blank">我的求助</a></dt>
+  		<dd>
+  			<ul>
+  				<li>戒毒、社工人员操作，<span class="red">可用，真实数据，非业务数据</span></li>
+  				<li>pageIndex:分页，从0开始</li>
+  				<li>pageSize:分页条数，默认20，可为空</li>
+  				<li>uid:用户uid，必填</li>
+  			</ul>
+  		</dd>  			
+  		<dt><a href="${basePath }qiuzhu/resp.do" target="_blank">求助回复</a></dt>
+  		<dd>
+  			<ul>
+  				<li>社区人员操作，post请求，<span class="red">可用</span></li>
+  				<li>id:求助记录id，必填</li>
+  				<li>uid:用户uid，必填</li>
+  				<li>content:回复内容</li>
+  			</ul>
+  		</dd>
+  		
+  		<dt><a href="${basePath }niaojian/create.do" target="_blank">尿检数据提交</a></dt>
+  		<dd>
+  			<ul>
+				<li>戒毒人员操作，post请求，<span class="red">可用</span></li>
+  				<li>uid:戒毒人员id，必填</li>
+  				<li>address:尿样社区（地址），必填</li>
+  				<li>result:尿检结果，阴性，阳性</li>
+  				<li>remarks:尿检说明，字符串，最多256字</li>
+  				<li>isLocal:是否本地尿样，0：异地，1：本地</li>
+  				<li>fileIds:上传附件，上传文件id逗号分隔</li>
+  			</ul>
+  		</dd>
+  		<dt><a href="${basePath }niaojian/my.do" target="_blank">我的尿检</a></dt>
+  		<dd>
+  			<ul>
+  			  	<li>戒毒、社工人员操作，<span class="red">可用，真实数据，非业务数据</span></li>
+				<li>pageIndex:分页，从0开始</li>
+  				<li>pageSize:分页条数，默认20，可为空</li>
+  				<li>uid:用户uid，必填</li>
+  			</ul>
+  		</dd>
+  		<dt><a href="${basePath }niaojian/check.do" target="_blank">尿检检查</a></dt>
+  		<dd>
+  			<ul>
+  				<li>社区人员操作，对戒毒人员上传的尿检结果标记判断结果<span class="red">可用，暂不操作</span></li>
+  				<li>uid:用户uid，必填</li>
+				<li>id:记录id，不可为空</li>
+  				<li>flag:检查标记，0：未检查，1：正常，-1：不正常</li>
+  				<li>remarks:备注说明，可为空</li>
+  			</ul>
+  		</dd>  		
+  		
+  	</dl>
+</div>
+</div>
+</body>
+</html>

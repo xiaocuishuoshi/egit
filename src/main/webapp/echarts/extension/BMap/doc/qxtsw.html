@@ -1,0 +1,311 @@
+﻿
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            body {
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body style="overflow-x:hidden">
+        <div id="main" style="height:370px; width:100%;"></div>
+        <script src="../../../doc/example/www/js/echarts.js"></script>
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+        <script src="../../../doc/asset/js/jquery.min.js"></script> 
+        <script>
+		(function () {
+    require.config({
+        paths: {
+            echarts: '../../../doc/example/www/js'
+        },
+        packages: [
+            {
+                name: 'BMap',
+                location: '../src',
+                main: 'main'
+            }
+        ]
+    });
+
+    require(
+    [
+        'echarts',
+        'BMap',
+		'echarts/chart/heatmap',
+        'echarts/chart/map'
+    ],
+    function (echarts, BMapExtension) {
+        $('#main').css({
+            height:$('body').height(),
+            width: $('body').width()
+        });
+
+        // 初始化地图
+        var BMapExt = new BMapExtension($('#main')[0], BMap, echarts,{
+            enableMapClick: false
+        });
+        var map = BMapExt.getMap();
+        var container = BMapExt.getEchartsContainer();
+
+        var startPoint = {
+            
+           x: 114.3162,
+             y: 30.581084
+
+        };
+
+        var point = new BMap.Point(startPoint.x, startPoint.y);
+        map.centerAndZoom(point,7);
+        map.enableScrollWheelZoom(true);
+         // 地图自定义样式
+        map.setMapStyle({
+            styleJson: [
+                  {
+                       "featureType": "water",
+                       "elementType": "all",
+                       "stylers": {
+                            "color": "#044161"
+                       }
+                  },
+                  {
+                       "featureType": "land",
+                       "elementType": "all",
+                       "stylers": {
+                            "color": "#004981"
+                       }
+                  },
+                  {
+                       "featureType": "boundary",
+                       "elementType": "geometry",
+                       "stylers": {
+                            "color": "#064f85"
+                       }
+                  },
+                  {
+                       "featureType": "railway",
+                       "elementType": "all",
+                       "stylers": {
+                            "visibility": "off"
+                       }
+                  },
+                  {
+                       "featureType": "highway",
+                       "elementType": "geometry",
+                       "stylers": {
+                            "color": "#004981"
+                       }
+                  },
+                  {
+                       "featureType": "highway",
+                       "elementType": "geometry.fill",
+                       "stylers": {
+                            "color": "#005b96",
+                            "lightness": 1
+                       }
+                  },
+                  {
+                       "featureType": "highway",
+                       "elementType": "labels",
+                       "stylers": {
+                            "visibility": "off"
+                       }
+                  },
+                  {
+                       "featureType": "arterial",
+                       "elementType": "geometry",
+                       "stylers": {
+                            "color": "#004981"
+                       }
+                  },
+                  {
+                       "featureType": "arterial",
+                       "elementType": "geometry.fill",
+                       "stylers": {
+                            "color": "#00508b"
+                       }
+                  },
+                  {
+                       "featureType": "poi",
+                       "elementType": "all",
+                       "stylers": {
+                            "visibility": "off"
+                       }
+                  },
+                  {
+                       "featureType": "green",
+                       "elementType": "all",
+                       "stylers": {
+                            "color": "#056197",
+                            "visibility": "off"
+                       }
+                  },
+                  {
+                       "featureType": "subway",
+                       "elementType": "all",
+                       "stylers": {
+                            "visibility": "off"
+                       }
+                  },
+                  {
+                       "featureType": "manmade",
+                       "elementType": "all",
+                       "stylers": {
+                            "visibility": "off"
+                       }
+                  },
+                  {
+                       "featureType": "local",
+                       "elementType": "all",
+                       "stylers": {
+                            "visibility": "off"
+                       }
+                  },
+                  {
+                       "featureType": "arterial",
+                       "elementType": "labels",
+                       "stylers": {
+                            "visibility": "off"
+                       }
+                  },
+                  {
+                       "featureType": "boundary",
+                       "elementType": "geometry.fill",
+                       "stylers": {
+                            "color": "#029fd4"
+                       }
+                  },
+                  {
+                       "featureType": "building",
+                       "elementType": "all",
+                       "stylers": {
+                            "color": "#1a5787"
+                       }
+                  },
+                  {
+                       "featureType": "label",
+                       "elementType": "all",
+                       "stylers": {
+                            "visibility": "off"
+                       }
+                  }
+            ]
+        });
+
+        option = {
+            color: ['gold','aqua','lime'],
+            title : {
+                text: '武汉省内人口流向图迁徙',
+                x:'center',
+                textStyle : {
+                    color: '#fff'
+                }
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: function (v) {
+                    return v[1].replace(':', ' > ');
+                }
+            },
+            legend: {
+                orient: 'vertical',
+                x:'left',
+                data:['武汉'],
+                selectedMode: 'single',
+                textStyle : {
+                    color: '#eee'
+                }
+            },
+            
+            dataRange: {
+                min : 200,
+                max : 1000,
+                range: {
+                    start: 0,
+                    end: 1000,
+                },
+                x: 'left',
+                calculable : true,
+                color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
+                textStyle:{
+                    color:'#eee'
+                }
+            },
+            series : [
+                {
+                    name:'武汉',
+                    type:'map',
+                    mapType: 'none',
+                    data:[],
+                    geoCoord: {'武汉': [114.3162,30.581084],
+					      '十堰':[110.801229,32.636994],'咸宁':[114.300061,29.880657],'孝感':[113.935734,30.927955],'宜昌':[111.310981,30.732758],'恩施':[109.517433,30.308979],'江汉':[114.266384,30.610951],'荆州':[112.241866,30.332591],'荆门':[112.21733,31.042611],'鄂州':[114.895594,30.384439],'随州':[113.379358,31.717858],                     						
+                    },
+
+                    markLine : {
+                        smooth:true,
+                        effect : {
+                            show: true,
+                            scaleSize: 1,
+                            period: 30,
+                            color: '#fff',
+                            shadowBlur: 10
+                        },
+                        itemStyle : {
+                            normal: {
+                                borderWidth:1,
+                                lineStyle: {
+                                    type: 'solid',
+                                    shadowBlur: 10
+                                }
+                            }
+                        },
+                        data : [
+                              [{name:'十堰',value:990},{name:'武汉'}],
+                              [{name:'咸宁',value:226},{name:'武汉'}],
+                              [{name:'孝感',value:357},{name:'武汉'}],
+                              [{name:'宜昌',value:152},{name:'武汉'}],
+                              [{name:'恩施',value:111},{name:'武汉'}],
+                              [{name:'江汉',value:183},{name:'武汉'}],
+                              [{name:'荆州',value:356},{name:'武汉'}],
+                              [{name:'荆门',value:122},{name:'武汉'}],
+                              [{name:'鄂州',value:149},{name:'武汉'}],
+                              [{name:'随州',value:167},{name:'武汉'}],
+                        ]
+                    },
+                    markPoint : {
+                        symbol:'emptyCircle',
+                        symbolSize : function (v){
+                            return 10 + v/10
+                        },
+                        effect : {
+                            show: true,
+                            shadowBlur : 0
+                        },
+                        itemStyle:{
+                            normal:{
+                                label:{show:true}
+                            }
+                        },
+                        data : [
+                           {name:'十堰',value:990},{name:'咸宁',value:226},{name:'孝感',value:357},{name:'宜昌',value:152},
+                           {name:'恩施',value:111},
+                           {name:'江汉',value:183},{name:'荆州',value:356},{name:'荆门',value:122},{name:'鄂州',value:149},{name:'随州',value:167},
+                        ]
+                    }
+
+                }
+               
+            ]
+        };
+
+        var myChart = BMapExt.initECharts(container);
+        window.onresize = myChart.onresize;
+        BMapExt.setOption(option);
+    }
+);
+})();
+		</script>
+
+    </body>
+</html>

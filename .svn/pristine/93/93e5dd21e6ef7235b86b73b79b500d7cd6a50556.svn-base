@@ -1,0 +1,64 @@
+package com.whfp.oa.manager.app.action;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.whfp.oa.manager.app.action.model.VisitorCreateInputModel;
+import com.whfp.oa.manager.app.bean.JsonBody;
+import com.whfp.oa.manager.jiedu.bean.JdActVisit;
+
+/**
+ * 谈话接口
+ * @author wenhu
+ *
+ */
+@Controller
+@RequestMapping("/app/visitor")
+public class VisitorApiController extends JsonBaseController{
+	
+
+	/**
+	 * 走访记录提交
+	 * @param model
+	 * @return
+	 */
+	@PostMapping("/create")
+	public  @ResponseBody  JsonBody<String> create(VisitorCreateInputModel model){
+		
+		return new JsonBody<>(1,"操作成功");
+	}
+	
+	@GetMapping("/my")
+	public @ResponseBody JsonBody<List<JdActVisit>> my(@RequestParam(value="pageIndex",required=false,defaultValue="0")  int pageIndex
+			,@RequestParam(value="pageSize",required=false,defaultValue="20")  int pageSize){
+		
+		List<JdActVisit> list=new ArrayList<>();
+		
+		JdActVisit item1=new JdActVisit();
+		
+		item1.setKey1("key1");
+		item1.setKey2("key2");
+		item1.setKey3("key3");
+		item1.setKey4("key4");
+		item1.setKey5("key5");
+		item1.setReasonType("111111");
+		item1.setContent("remarks");
+		item1.setToUid("");
+		//item1.setToUserName("toUserName");
+		item1.setToVisitor("toVisitor");
+		item1.setToVisitorPhone("toVisitorPhone");
+		item1.setToVisitorRelationship("toVisitorRelationship");
+		
+		list.add(item1);
+		return new JsonBody<>(1,"查询成功",list);
+	}
+	
+	
+	
+}

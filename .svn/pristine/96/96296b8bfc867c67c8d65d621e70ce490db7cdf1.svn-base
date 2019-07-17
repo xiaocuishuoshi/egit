@@ -1,0 +1,46 @@
+package com.whfp.oa.manager.app.action;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.whfp.oa.manager.app.action.model.QiuzhuInputModel;
+import com.whfp.oa.manager.app.bean.JsonBody;
+import com.whfp.oa.manager.jd.bean.JdShqz;
+
+/**
+ * 生活求助
+ * @author wenhu
+ *
+ */
+@Controller
+@RequestMapping("/app/qiuzhu")
+public class QiuzhuApiController {
+
+	@PostMapping("/create")
+	public  @ResponseBody  JsonBody<String> create(QiuzhuInputModel model){
+		
+		return new JsonBody<>(1,"操作成功");
+	}
+	
+	@GetMapping("/my")
+	public  @ResponseBody  JsonBody<List<JdShqz>> my(@RequestParam(value="pageIndex",required=false,defaultValue="0")  int pageIndex
+			,@RequestParam(value="pageSize",required=false,defaultValue="20")  int pageSize){
+		
+		List<JdShqz> list=new ArrayList<>();
+		
+		return new JsonBody<>(1,"操作成功",list);
+	}
+	
+	@PostMapping("/resp")
+	public  @ResponseBody  JsonBody<String> resp(String content){
+		
+		return new JsonBody<>(1,"操作成功");
+	}
+}

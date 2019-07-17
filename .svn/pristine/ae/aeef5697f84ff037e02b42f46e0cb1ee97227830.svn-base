@@ -1,0 +1,136 @@
+package com.whfp.oa.manager.jiedu.bean;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "jd_act_talk")
+public class JdActTalk {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	
+	@Column(name="to_uid")
+	private String toUid;
+	
+	@Column(name="to_user")
+	private String toUser;
+	
+	private String address;
+	
+	private String content;
+	
+	@Column(name="talk_uid")
+	private String talkUid;
+	
+	@Column(name="talk_user")
+	private String talkUser;
+	
+	@Column(name="check_status")
+	private String checkStatus;
+	
+	@Column(name="talk_date")
+	private String talkDate;
+	
+	@Column(name="create_uid")
+	private String createUid;
+	
+	@Column(name="create_date")
+	private Date createDate;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getToUid() {
+		return toUid;
+	}
+
+	public void setToUid(String toUid) {
+		this.toUid = toUid;
+	}
+
+	public String getToUser() {
+		return toUser;
+	}
+
+	public void setToUser(String toUser) {
+		this.toUser = toUser;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getTalkUid() {
+		return talkUid;
+	}
+
+	public void setTalkUid(String talkUid) {
+		this.talkUid = talkUid;
+	}
+
+	public String getCheckStatus() {
+		return checkStatus;
+	}
+
+	public void setCheckStatus(String checkStatus) {
+		this.checkStatus = checkStatus;
+	}
+
+	public String getTalkDate() {
+		return talkDate;
+	}
+
+	public void setTalkDate(String talkDate) {
+		this.talkDate = talkDate;
+	}
+
+	public String getCreateUid() {
+		return createUid;
+	}
+
+	public void setCreateUid(String createUid) {
+		this.createUid = createUid;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	public String getTalkUser() {
+		return talkUser;
+	}
+
+	public void setTalkUser(String talkUser) {
+		this.talkUser = talkUser;
+	}
+	
+}
