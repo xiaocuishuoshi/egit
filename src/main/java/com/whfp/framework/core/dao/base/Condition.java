@@ -18,6 +18,8 @@ public class Condition {
     public Condition(String column){
         this.column = column;
       this.column = column;
+      this.column = column;
+      this.column = column;
     }
     public Condition(String column,Object value, Op op,OpType type){
         this.column = column;
