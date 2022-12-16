@@ -9,7 +9,7 @@
   <url></url>
   <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.3.14.RELEASE</spring.version>
+        <spring.version>5.2.20.RELEASE</spring.version>
         <activiti.version>5.22.0</activiti.version>
     </properties>
   <dependencies>
